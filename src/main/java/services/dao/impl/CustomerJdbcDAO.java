@@ -1,18 +1,18 @@
-package services.impl;
+package services.dao.impl;
 
 import domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import services.GenericDao;
+import services.dao.CustomerDao;
 
 import javax.sql.DataSource;
 import java.util.List;
 
 @Repository
-public class CustomerDAO implements GenericDao<Customer, Long> {
+public class CustomerJdbcDAO implements CustomerDao {
 
     @Autowired
-    DataSource dataSource;
+    private DataSource dataSource;
 
     @Override
     public void add(Customer entity) {

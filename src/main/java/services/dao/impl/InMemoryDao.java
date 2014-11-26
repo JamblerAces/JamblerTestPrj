@@ -1,6 +1,6 @@
-package services.impl;
+package services.dao.impl;
 
-import services.GenericDao;
+import services.dao.GenericDao;
 
 import java.util.ArrayList;
 import java.util.List;
