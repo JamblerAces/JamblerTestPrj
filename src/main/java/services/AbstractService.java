@@ -1,6 +1,5 @@
 package services;
 
-import services.GenericService;
 import services.dao.GenericDao;
 
 import java.util.List;
@@ -9,7 +8,7 @@ public abstract class AbstractService<E> implements GenericService<E> {
 
     @Override
     public void add(E entity) {
-        getDao().add(entity);
+        getDao().create(entity);
     }
 
     @Override
@@ -29,7 +28,7 @@ public abstract class AbstractService<E> implements GenericService<E> {
 
     @Override
     public List<E> list() {
-        return getDao().list();
+        return getDao().findAll();
     }
 
     protected abstract GenericDao<E, Long> getDao();

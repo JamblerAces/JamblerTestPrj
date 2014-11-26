@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface GenericDao<E, K> {
 
-    void add(E entity);
+    void create(E entity);
 
     void update(E entity);
 
@@ -12,6 +12,6 @@ public interface GenericDao<E, K> {
 
     E find(K key);
 
-    List<E> list();
+    List<E> findAll();
 
 }

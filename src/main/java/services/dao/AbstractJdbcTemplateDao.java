@@ -18,4 +18,8 @@ public abstract class AbstractJdbcTemplateDao<E, K> implements GenericDao<E, K> 
         this.dataSource = dataSource;
         this.jdbcTemplateObject = new JdbcTemplate(dataSource);
     }
+
+    protected JdbcTemplate getJdbcTemplateObject() {
+        return jdbcTemplateObject;
+    }
 }
