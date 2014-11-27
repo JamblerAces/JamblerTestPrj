@@ -1,5 +1,6 @@
 /* Put db schema here*/
-CREATE TABLE `Employee` (
+
+CREATE TABLE `Customer` (
   `ID`   INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `NAME` VARCHAR(100)     NOT NULL,
 /*`AGE` INT(10) UNSIGNED NOT NULL, */

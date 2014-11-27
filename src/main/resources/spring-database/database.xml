@@ -2,18 +2,22 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/jdbc
+            http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
     <!--  H2 embedded database for invoke working with MySQL  -->
     <bean id="h2.dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
         <property name="driverClass" value="org.h2.Driver"/>
-        <property name="url" value="jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"/>
+        <property name="url" value="jdbc:h2:mem:test;MODE=Oracle;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"/>
         <property name="username" value="sa"/>
         <property name="password" value=""/>
     </bean>
 
     <jdbc:initialize-database data-source="h2.dataSource" ignore-failures="DROPS">
-        <jdbc:script location="classpath:/sql/db_schema_h2.sql"/>
+        <jdbc:script location="classpath:/sql/db_schema_h2.ddl"/>
         <jdbc:script location="classpath:/sql/db-test-data.sql"/>
     </jdbc:initialize-database>
 

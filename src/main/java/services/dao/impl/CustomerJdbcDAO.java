@@ -3,7 +3,7 @@ package services.dao.impl;
 import domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import services.dao.AbstractJdbcTemplateDao;
 import services.dao.CustomerDao;
 
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@Repository
+@Service(value = "CustomerDao")
 public class CustomerJdbcDAO extends AbstractJdbcTemplateDao<Customer, Long> implements CustomerDao {
 
     private static final CustomerRowMapper rowMapper = new CustomerRowMapper();
@@ -59,7 +59,7 @@ public class CustomerJdbcDAO extends AbstractJdbcTemplateDao<Customer, Long> imp
 
     @Override
     public Customer find(Long key) {
-        return getJdbcTemplateObject().queryForObject(SQL_QUERY.findById.getQuery(), rowMapper);
+        return getJdbcTemplateObject().queryForObject(SQL_QUERY.findById.getQuery(), rowMapper, key);
     }
 
     @Override
