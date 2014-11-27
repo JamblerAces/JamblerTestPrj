@@ -26,6 +26,7 @@
         <hibernate.version>4.3.7.Final</hibernate.version>
         <mockito.version>1.10.8</mockito.version>
         <junit.version>4.11</junit.version>
+        <c3p0.version>0.9.1.2</c3p0.version>
     </properties>
 
     <dependencies>
@@ -35,6 +36,13 @@
             <artifactId>mockito-all</artifactId>
             <version>${mockito.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>${c3p0.version}</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.hibernate</groupId>

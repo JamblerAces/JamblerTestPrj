@@ -3,7 +3,7 @@ package services.dao.impl;
 import domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 import services.dao.AbstractJdbcTemplateDao;
 import services.dao.CustomerDao;
 
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@Service(value = "CustomerDao")
+@Repository(value = "CustomerDao")
 public class CustomerJdbcDAO extends AbstractJdbcTemplateDao<Customer, Long> implements CustomerDao {
 
     private static final CustomerRowMapper rowMapper = new CustomerRowMapper();
@@ -24,6 +24,7 @@ public class CustomerJdbcDAO extends AbstractJdbcTemplateDao<Customer, Long> imp
         update("UPDATE customer SET name = ? WHERE id = ?"),
         remove("DELETE FROM customer  WHERE id = ?"),
         findById("SELECT * FROM customer WHERE id = ?"),
+        findByName("SELECT * FROM customer WHERE name LIKE ?"),
         findAll("SELECT * FROM customer");
 
         private String query;
@@ -63,7 +64,11 @@ public class CustomerJdbcDAO extends AbstractJdbcTemplateDao<Customer, Long> imp
     }
 
     @Override
-    @SuppressWarnings("rawtypes")
+    public Customer findByName(String name) {
+        return getJdbcTemplateObject().queryForObject(SQL_QUERY.findByName.getQuery(), rowMapper, name);
+    }
+
+    @Override
     public List<Customer> findAll() {
         List<Customer> customers = new ArrayList<>();
         List<Map<String, Object>> rows = getJdbcTemplateObject().queryForList(SQL_QUERY.findAll.getQuery());
@@ -77,7 +82,6 @@ public class CustomerJdbcDAO extends AbstractJdbcTemplateDao<Customer, Long> imp
         return customers;
     }
 
-    @SuppressWarnings("rawtypes")
     private static class CustomerRowMapper implements RowMapper<Customer> {
         public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
             Customer customer = new Customer();

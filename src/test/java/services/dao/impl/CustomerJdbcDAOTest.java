@@ -1,5 +1,7 @@
 package services.dao.impl;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.Collections2;
 import domain.Customer;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +11,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import services.dao.CustomerDao;
 
+import java.util.Collection;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring-config.xml")
@@ -27,7 +33,23 @@ public class CustomerJdbcDAOTest {
     public void testCreate() throws Exception {
         Customer newCus = new Customer("testNew");
         dao.create(newCus);
-        Customer cus = dao.find(2l);
-        assertEquals("testNew", cus.getName());
+        List<Customer> customers = dao.findAll();
+        Collection<Customer> customersFiltered = Collections2.filter(customers, new CustomerPredicateByName());
+        assertTrue(customersFiltered.size() > 0);
+    }
+
+    @Test
+    public void testUpdate() throws Exception {
+        Customer newCus = new Customer("testNew");
+        dao.create(newCus);
+        Customer customer = dao.findByName("testNew");
+        assertEquals("testNew", customer.getName());
+    }
+
+    class CustomerPredicateByName implements Predicate<Customer> {
+        @Override
+        public boolean apply(Customer customer) {
+            return "testNew".equals(customer.getName());
+        }
     }
 }
