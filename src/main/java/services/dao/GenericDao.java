@@ -4,9 +4,7 @@ import java.util.List;
 
 public interface GenericDao<E, K> {
 
-    void create(E entity);
-
-    void update(E entity);
+    void save(E entity);
 
     void remove(E entity);
 

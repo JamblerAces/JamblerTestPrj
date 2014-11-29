@@ -48,7 +48,7 @@ public class CustomerJdbcDAO extends AbstractJdbcTemplateDao<Customer, Long> imp
     }
 
     @Override
-    public void update(Customer entity) {
+    public void save(Customer entity) {
         getJdbcTemplateObject().update(SQL_QUERY.update.getQuery(), entity.getName(), entity.getId());
     }
 

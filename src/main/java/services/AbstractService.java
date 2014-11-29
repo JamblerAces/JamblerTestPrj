@@ -13,7 +13,7 @@ public abstract class AbstractService<E> implements GenericService<E> {
 
     @Override
     public void update(E entity) {
-        getDao().update(entity);
+        getDao().save(entity);
     }
 
     @Override
