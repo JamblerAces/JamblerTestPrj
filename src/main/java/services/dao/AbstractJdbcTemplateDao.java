@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import javax.sql.DataSource;
 
 @Repository
-public abstract class AbstractJdbcTemplateDao<E, K> implements GenericDao<E, K> {
+public abstract class AbstractJdbcTemplateDao<E> implements GenericDao<E> {
 
     private DataSource dataSource;
     private JdbcTemplate jdbcTemplateObject;

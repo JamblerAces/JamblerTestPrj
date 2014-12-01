@@ -11,15 +11,15 @@ public class Shop {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String name;
+    private Long id;
+    private String shopName;
     private String mainDomen;
 
     public Shop() {
     }
 
-    public Shop(String name, String mainDomen) {
-        this.name = name;
+    public Shop(String shopName, String mainDomen) {
+        this.shopName = shopName;
         this.mainDomen = mainDomen;
     }
 
@@ -31,12 +31,12 @@ public class Shop {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getShopName() {
+        return shopName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
     }
 
     public String getMainDomen() {
@@ -55,21 +55,21 @@ public class Shop {
 
         Shop that = (Shop) o;
 
-        return Objects.equal(this.name, that.name) &&
+        return Objects.equal(this.shopName, that.shopName) &&
                 Objects.equal(this.mainDomen, that.mainDomen) &&
                 Objects.equal(this.id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(name, mainDomen, id);
+        return Objects.hashCode(shopName, mainDomen, id);
     }
 
 
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("name", name)
+                .add("shopName", shopName)
                 .add("mainDomen", mainDomen)
                 .add("id", id)
                 .toString();

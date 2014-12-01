@@ -20,7 +20,7 @@ public class CustomerServiceImpl extends AbstractService<Customer> implements Cu
     }
 
     @Override
-    protected GenericDao<Customer, Long> getDao() {
+    protected GenericDao<Customer> getDao() {
         return dao;
     }
 }

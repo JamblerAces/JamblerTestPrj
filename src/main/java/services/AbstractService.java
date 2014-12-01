@@ -8,7 +8,7 @@ public abstract class AbstractService<E> implements GenericService<E> {
 
     @Override
     public void add(E entity) {
-        getDao().create(entity);
+        getDao().save(entity);
     }
 
     @Override
@@ -31,5 +31,5 @@ public abstract class AbstractService<E> implements GenericService<E> {
         return getDao().findAll();
     }
 
-    protected abstract GenericDao<E, Long> getDao();
+    protected abstract GenericDao<E> getDao();
 }

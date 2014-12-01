@@ -2,6 +2,7 @@ package services.dao.impl;
 
 import domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import services.dao.AbstractJdbcTemplateDao;
@@ -14,8 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@Repository(value = "CustomerDao")
-public class CustomerJdbcDAO extends AbstractJdbcTemplateDao<Customer, Long> implements CustomerDao {
+@Repository
+@Profile("jdbc")
+public class CustomerJdbcDAO extends AbstractJdbcTemplateDao<Customer> implements CustomerDao {
 
     private static final CustomerRowMapper rowMapper = new CustomerRowMapper();
 
@@ -41,11 +43,6 @@ public class CustomerJdbcDAO extends AbstractJdbcTemplateDao<Customer, Long> imp
     @Autowired
     public CustomerJdbcDAO(DataSource dataSource) {
         super(dataSource);
-    }
-
-    @Override
-    public void create(Customer entity) {
-        getJdbcTemplateObject().update(SQL_QUERY.create.getQuery(), entity.getName());
     }
 
     @Override

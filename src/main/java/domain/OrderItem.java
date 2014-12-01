@@ -11,7 +11,7 @@ public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String itemUrl;
     private Shop shop;
     private String color;
