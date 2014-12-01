@@ -10,6 +10,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 import services.dao.CustomerDao;
 
 import java.util.Collection;
@@ -32,6 +34,7 @@ public class CustomerJdbcDAOTest {
 
     @Test
     @Ignore
+    @Transactional(readOnly = true, isolation = Isolation.READ_COMMITTED)
     public void testCreate() throws Exception {
         Customer newCus = new Customer("testNew");
         dao.save(newCus);
