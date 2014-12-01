@@ -11,7 +11,7 @@ import services.dao.GenericDao;
 @Service
 public class CustomerServiceImpl extends AbstractService<Customer> implements CustomerService {
 
-
+    //Just a dao
     private CustomerDao dao;
 
     @Autowired
