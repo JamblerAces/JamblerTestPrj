@@ -37,6 +37,7 @@ public class CustomerJdbcDAOTest {
     public void testCreate() throws Exception {
         Customer newCus = new Customer("testNew");
         dao.save(newCus);
+        /*testing commit message*/
         List<Customer> customers = dao.findAll();
         Collection<Customer> customersFiltered = Collections2.filter(customers, new CustomerPredicateByName());
         assertTrue(customersFiltered.size() > 0);
