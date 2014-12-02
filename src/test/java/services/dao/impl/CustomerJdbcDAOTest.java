@@ -3,8 +3,8 @@ package services.dao.impl;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import domain.Customer;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,6 @@ public class CustomerJdbcDAOTest {
     }
 
     @Test
-    @Ignore
     @Transactional(readOnly = true, isolation = Isolation.READ_COMMITTED)
     public void testCreate() throws Exception {
         Customer newCus = new Customer("testNew");

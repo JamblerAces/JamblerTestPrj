@@ -28,7 +28,7 @@
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="org.h2.Driver"/>
-        <property name="jdbcUrl" value="jdbc:h2:mem:testDb;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"/>
+        <property name="jdbcUrl" value="jdbc:h2:mem:testDb;MODE=MYSQL;DB_CLOSE_DELAY=-1;IGNORECASE=TRUE;MVCC=TRUE;"/>
     </bean>
 
     <!-- Hibernate 4 Annotation SessionFactory Bean definition-->
