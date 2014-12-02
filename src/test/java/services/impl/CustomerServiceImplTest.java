@@ -1,45 +1,29 @@
-package services.dao.impl;
+package services.impl;
 
 import domain.Customer;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import services.dao.CustomerDao;
+import services.CustomerService;
 
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring-config.xml")
-public class CustomerHibDaoTest {
+public class CustomerServiceImplTest {
 
     @Autowired
-    CustomerDao dao;
-
-    @Before
-    public void setUp() throws Exception {
-
-    }
+    private CustomerService service;
 
     @Test
     @Transactional
     public void testFindByName() throws Exception {
-        dao.save(new Customer("testCustomer"));
-        Customer customer = dao.findByName("testCustomer");
+        service.add(new Customer("testCustomer"));
+        Customer customer = service.findByName("testCustomer");
         assertNotNull(customer);
     }
 
-    @Test
-    @Transactional
-    public void testFindByNameAgain() throws Exception {
-        dao.save(new Customer("testCustomer"));
-        List<Customer> customers = dao.findAll();
-        assertEquals(1, customers.size());
-    }
 }
