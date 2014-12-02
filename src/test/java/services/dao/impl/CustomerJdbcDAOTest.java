@@ -28,6 +28,7 @@ public class CustomerJdbcDAOTest {
         Customer newCus = new Customer("testNew");
         dao.create(newCus);
         Customer cus = dao.find(2l);
+        /*test commit*/
         assertEquals("testNew", cus.getName());
     }
 }
