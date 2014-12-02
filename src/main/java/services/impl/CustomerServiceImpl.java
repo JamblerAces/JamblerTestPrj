@@ -34,7 +34,7 @@ public class CustomerServiceImpl extends AbstractService<Customer> implements Cu
     }
 
     @Override
-    public Customer findByName(String customerName) {
+    public Customer findByName(final String customerName) {
         logger.debug("Looking for customer with name = " + customerName);
         return dao.findByName(customerName);
     }
