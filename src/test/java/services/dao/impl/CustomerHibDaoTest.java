@@ -27,6 +27,7 @@ public class CustomerHibDaoTest {
     @Test
     @Transactional
     public void testFindByName() throws Exception {
+        //Testing git user
         dao.save(new Customer("testCustomer"));
         Customer customer = dao.findByName("testCustomer");
         assertNotNull(customer);
