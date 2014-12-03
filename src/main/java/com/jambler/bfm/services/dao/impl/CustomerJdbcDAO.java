@@ -24,7 +24,7 @@ public class CustomerJdbcDAO extends AbstractJdbcTemplateDao<Customer> implement
     private static enum SQL_QUERY {
         create("INSERT INTO customer (name) VALUES (?)"),
         update("UPDATE customer SET name = ? WHERE id = ?"),
-        remove("DELETE FROM customer  WHERE id = ?"),
+        remove("DELETE FROM customer  WHERE id = ? "),
         findById("SELECT * FROM customer WHERE id = ?"),
         findByName("SELECT * FROM customer WHERE name LIKE ?"),
         findAll("SELECT * FROM customer");
