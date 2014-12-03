@@ -34,7 +34,7 @@
         <appender-ref ref="LILITH_FILE"/>
     </root>
 
-    <logger name="services.impl" level="debug">
+    <logger name="com.jambler.bfm.services.impl" level="debug">
         <appender-ref ref="ROLLING"/>
     </logger>
 </configuration>

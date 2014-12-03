@@ -7,6 +7,6 @@
     <session-factory>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
-        <mapping package="domain"/>
+        <mapping package="com.jambler.bfm.domain"/>
     </session-factory>
 </hibernate-configuration>
