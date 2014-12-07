@@ -54,19 +54,6 @@
     <dependencies>
 
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>${servlet.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>jsp-api</artifactId>
-            <version>${jsp.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
             <groupId>de.huxhorn.lilith</groupId>
             <artifactId>de.huxhorn.lilith.logback.encoder.classic</artifactId>
             <version>0.9.44</version>
