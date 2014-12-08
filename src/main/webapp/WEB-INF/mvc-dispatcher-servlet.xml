@@ -14,14 +14,6 @@
         <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
     </bean>
 
-    <!-- Resolves views selected for rendering by @Controllers to .jsp resources
-        in the /WEB-INF/views directory -->
-    <!--   <bean
-               class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-           <property name="prefix" value="/WEB-INF/pages/" />
-           <property name="suffix" value=".jsp" />
-       </bean>  -->
-
     <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
         <property name="definitions">
             <list>

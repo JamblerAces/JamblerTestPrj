@@ -6,13 +6,14 @@ import com.google.common.base.Objects;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "orderItem")
 public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String itemUrl;
+
+    @OneToOne
     private Shop shop;
     private String color;
     private String size;

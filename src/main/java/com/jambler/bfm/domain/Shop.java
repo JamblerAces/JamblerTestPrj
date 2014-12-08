@@ -3,10 +3,12 @@ package com.jambler.bfm.domain;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@Table(name = "shop")
 public class Shop {
 
     @Id

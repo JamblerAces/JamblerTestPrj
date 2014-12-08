@@ -2,7 +2,7 @@ package com.jambler.bfm.services.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,6 +10,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+@Lazy
 public abstract class AbstractHibernateDao<E> implements GenericDao<E> {
 
     private SessionFactory sessionFactory;
@@ -20,7 +21,6 @@ public abstract class AbstractHibernateDao<E> implements GenericDao<E> {
         entityType = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
-    @Autowired
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
