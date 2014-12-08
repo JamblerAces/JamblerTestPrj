@@ -1,4 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-
-This is a footer
-&copy; Abbasov Kirill
+<div style="text-align: center;">
+    &copy; Abbasov Kirill
+</div>
