@@ -13,15 +13,7 @@
     <build>
         <finalName>bfm</finalName>
         <plugins>
-            <!-- Tomcat plugin -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>tomcat-maven-plugin</artifactId>
-                <configuration>
-                    <url>localhost:8080/manager</url>
-                    <path>/bfm</path>
-                </configuration>
-            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -49,9 +41,29 @@
         <c3p0.version>0.9.1.2</c3p0.version>
         <servlet.version>2.5</servlet.version>
         <jsp.version>2.1</jsp.version>
+        <tiles.version>3.0.5</tiles.version>
+        <logback.version>1.1.2</logback.version>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>javax.servlet.jsp.jstl</groupId>
+            <artifactId>jstl-api</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-extras</artifactId>
+            <version>${tiles.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>de.huxhorn.lilith</groupId>
@@ -59,7 +71,6 @@
             <version>0.9.44</version>
             <scope>runtime</scope>
         </dependency>
-
 
         <dependency>
             <groupId>org.mockito</groupId>
@@ -72,7 +83,6 @@
             <artifactId>c3p0</artifactId>
             <version>${c3p0.version}</version>
         </dependency>
-
 
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -95,7 +105,13 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.1.2</version>
+            <version>${logback.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
         </dependency>
 
         <dependency>
