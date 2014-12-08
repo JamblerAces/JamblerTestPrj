@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
+    <persistence-unit name="bfmPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.jambler.bfm.domain.Customer</class>
+        <class>com.jambler.bfm.domain.CustomerOrder</class>
+        <class>com.jambler.bfm.domain.Manager</class>
+        <class>com.jambler.bfm.domain.OrderItem</class>
+        <class>com.jambler.bfm.domain.Shop</class>
+    </persistence-unit>
+</persistence>

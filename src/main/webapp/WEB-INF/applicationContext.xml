@@ -10,10 +10,9 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-
     <jdbc:embedded-database type="HSQL" id="dataSource"/>
 
-    <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="packagesToScan" value="com.jambler.bfm.domain"/>
         <property name="dataSource" ref="dataSource"/>
         <property name="jpaProperties">
@@ -29,6 +28,7 @@
 
     <!--    Configuring TransactionManager Bean -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
+
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>

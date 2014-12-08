@@ -43,14 +43,14 @@
         <jsp.version>2.1</jsp.version>
         <tiles.version>3.0.5</tiles.version>
         <logback.version>1.1.2</logback.version>
-        <hsql.version>1.8.0.7</hsql.version>
+        <hsql.version>2.3.1</hsql.version>
         <spring-data-jpa.version>1.7.1.RELEASE</spring-data-jpa.version>
     </properties>
 
     <dependencies>
 
         <dependency>
-            <groupId>hsqldb</groupId>
+            <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>${hsql.version}</version>
         </dependency>

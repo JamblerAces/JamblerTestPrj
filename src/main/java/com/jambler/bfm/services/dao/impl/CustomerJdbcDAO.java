@@ -1,12 +1,12 @@
 package com.jambler.bfm.services.dao.impl;
 
 import com.jambler.bfm.domain.Customer;
+import com.jambler.bfm.services.dao.AbstractJdbcTemplateDao;
+import com.jambler.bfm.services.dao.CustomerDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import com.jambler.bfm.services.dao.AbstractJdbcTemplateDao;
-import com.jambler.bfm.services.dao.CustomerDao;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -71,7 +71,7 @@ public class CustomerJdbcDAO extends AbstractJdbcTemplateDao<Customer> implement
         List<Map<String, Object>> rows = getJdbcTemplateObject().queryForList(SQL_QUERY.findAll.getQuery());
         for (Map row : rows) {
             Customer customer = new Customer();
-            customer.setId(Integer.parseInt(String.valueOf(row.get("ID"))));
+            customer.setId(Long.parseLong(String.valueOf(row.get("ID"))));
             customer.setName((String) row.get("NAME"));
             customers.add(customer);
         }
@@ -82,7 +82,7 @@ public class CustomerJdbcDAO extends AbstractJdbcTemplateDao<Customer> implement
     private static class CustomerRowMapper implements RowMapper<Customer> {
         public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
             Customer customer = new Customer();
-            customer.setId(rs.getInt("ID"));
+            customer.setId(rs.getLong("ID"));
             customer.setName(rs.getString("NAME"));
             return customer;
         }
