@@ -9,16 +9,13 @@ import java.util.Date;
 @Entity
 public class CustomerOrder {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+
+    private Long id;
     private Date creationDate;
     private Date statusUpdateDate;
     private int status;
 
-    @ManyToOne
     private Customer customer;
-    @ManyToOne
     private Manager manager;
 
     @OneToOne
@@ -27,15 +24,13 @@ public class CustomerOrder {
     public CustomerOrder() {
     }
 
-    public CustomerOrder(Customer customer) {
-        this.customer = customer;
-    }
-
-    public long getId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -61,22 +56,6 @@ public class CustomerOrder {
 
     public void setStatus(int status) {
         this.status = status;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Manager getManager() {
-        return manager;
-    }
-
-    public void setManager(Manager manager) {
-        this.manager = manager;
     }
 
     @Override
@@ -109,5 +88,23 @@ public class CustomerOrder {
     @Override
     public int hashCode() {
         return Objects.hashCode(id, creationDate, statusUpdateDate, status, customer, manager);
+    }
+
+    @ManyToOne
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    @ManyToOne
+    public Manager getManager() {
+        return manager;
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
     }
 }

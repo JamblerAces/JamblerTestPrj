@@ -3,17 +3,14 @@ package com.jambler.bfm.domain;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Manager {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+
+    private Long id;
     private String name;
 
     public Manager() {
@@ -24,11 +21,13 @@ public class Manager {
     }
 
 
-    public long getId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -67,4 +66,14 @@ public class Manager {
     }
 
 
+    private Collection<CustomerOrder> orders;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "manager")
+    public Collection<CustomerOrder> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Collection<CustomerOrder> orders) {
+        this.orders = orders;
+    }
 }
