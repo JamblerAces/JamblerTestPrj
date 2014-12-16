@@ -3,27 +3,21 @@ package com.jambler.bfm.domain;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Shop {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String shopName;
-    private String mainDomen;
+    private String mainDomain;
 
-    public Shop() {
-    }
-
-    public Shop(String shopName, String mainDomen) {
-        this.shopName = shopName;
-        this.mainDomen = mainDomen;
-    }
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "shop")
+    @OrderBy("name ASC")
+    private Set<ShopItem> items;
 
     public long getId() {
         return id;
@@ -41,12 +35,12 @@ public class Shop {
         this.shopName = shopName;
     }
 
-    public String getMainDomen() {
-        return mainDomen;
+    public String getMainDomain() {
+        return mainDomain;
     }
 
-    public void setMainDomen(String mainDomen) {
-        this.mainDomen = mainDomen;
+    public void setMainDomain(String mainDomen) {
+        this.mainDomain = mainDomen;
     }
 
 
@@ -58,13 +52,13 @@ public class Shop {
         Shop that = (Shop) o;
 
         return Objects.equal(this.shopName, that.shopName) &&
-                Objects.equal(this.mainDomen, that.mainDomen) &&
+                Objects.equal(this.mainDomain, that.mainDomain) &&
                 Objects.equal(this.id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(shopName, mainDomen, id);
+        return Objects.hashCode(shopName, mainDomain, id);
     }
 
 
@@ -72,7 +66,7 @@ public class Shop {
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("shopName", shopName)
-                .add("mainDomen", mainDomen)
+                .add("mainDomen", mainDomain)
                 .add("id", id)
                 .toString();
     }

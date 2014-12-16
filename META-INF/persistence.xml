@@ -7,5 +7,6 @@
         <class>com.jambler.bfm.domain.Manager</class>
         <class>com.jambler.bfm.domain.OrderItem</class>
         <class>com.jambler.bfm.domain.Shop</class>
+        <class>com.jambler.bfm.domain.ShopItem</class>
     </persistence-unit>
 </persistence>

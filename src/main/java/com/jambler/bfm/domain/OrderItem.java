@@ -9,33 +9,28 @@ import javax.persistence.*;
 public class OrderItem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String itemUrl;
 
-    @OneToOne
-    private Shop shop;
+    @ManyToOne
+    private ShopItem item;
+
     private String color;
     private String size;
     private int amount;
     private double price;
 
-    public OrderItem() {
+    public ShopItem getItem() {
+        return item;
     }
 
-    public OrderItem(String itemUrl, Shop shop, double price, int amount) {
-        this.itemUrl = itemUrl;
-        this.shop = shop;
-        this.price = price;
-        this.amount = amount;
+    public void setItem(ShopItem item) {
+        this.item = item;
     }
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getItemUrl() {
@@ -44,14 +39,6 @@ public class OrderItem {
 
     public void setItemUrl(String itemUrl) {
         this.itemUrl = itemUrl;
-    }
-
-    public Shop getShop() {
-        return shop;
-    }
-
-    public void setShop(Shop shop) {
-        this.shop = shop;
     }
 
     public String getColor() {
@@ -86,7 +73,6 @@ public class OrderItem {
         this.price = price;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -95,7 +81,6 @@ public class OrderItem {
         OrderItem that = (OrderItem) o;
 
         return Objects.equal(this.itemUrl, that.itemUrl) &&
-                Objects.equal(this.shop, that.shop) &&
                 Objects.equal(this.color, that.color) &&
                 Objects.equal(this.size, that.size) &&
                 Objects.equal(this.amount, that.amount) &&
@@ -105,16 +90,14 @@ public class OrderItem {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(itemUrl, shop, color, size, amount, price,
+        return Objects.hashCode(itemUrl, color, size, amount, price,
                 id);
     }
-
 
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("itemUrl", itemUrl)
-                .add("shop", shop)
                 .add("color", color)
                 .add("size", size)
                 .add("amount", amount)
